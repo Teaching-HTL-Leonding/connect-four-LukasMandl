@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 export class Level2Component {
   public currentPlayerIndex = 1;
   public boardContent!: number[][];
-  private currentWinnerIx!: number;
+  private currentWinnerIx: number = 0;
 
   constructor(){
     this.restart();
@@ -15,6 +15,7 @@ export class Level2Component {
   }
 
   public drop(colIx: number) {
+    console.log("drop")
     if(this.currentWinnerIx === 0)
     {
       if(this.dropCoinAtCol(colIx))
@@ -24,9 +25,11 @@ export class Level2Component {
 
       this.currentWinnerIx = this.getWinnerIx();
     }
+    console.log(this.boardContent)
   }
 
   private dropCoinAtCol(colIx: number):boolean{
+    console.log("dropCoinAtCol")
     for(let i = this.boardContent.length - 1; i >= 0; i--)
     {
       if(this.boardContent[i][colIx] == 0)

@@ -6,7 +6,49 @@ import { BoardService } from './board.service';
   styleUrls: ['./level4.component.css'],
 })
 export class Level4Component {
-  constructor(private board: BoardService) {}
+
+
+
+
+  constructor(public board: BoardService) {
+    this.board.restart();
+  }
+
+  public drop(colIx: number) {
+    return this.board.drop(colIx);
+  }
+
+  public getWinnerIx():number{
+    return this.board.getWinnerIx();
+  }
+
+  public restart():void{
+    this.board.restart();
+  }
+
+  public getClassesForCells(): string[][] {
+    const rows = 6;
+    const cols = 7;
+
+    const result: string[][] = [];
+    for (let row = 0; row < rows; row++) {
+      result.push([]);
+      for (let col = 0; col < cols; col++) {
+        result[row][col] = this.getStyle(col, row);
+      }
+    }
+
+    return result;
+  }
+  public getStyle(col:number, row:number): string{
+    if(this.board.boardContent[row][col] !== 0){
+      return `occupied-${this.board.boardContent[row][col]}`;
+    }
+    return "";
+  }
+
 
   // TODO: Enhance solution from level 3 by extracting the logic in a separate Angular service.
+
+
 }
