@@ -11,7 +11,6 @@ export class Level4Component {
 
 
   constructor(public board: BoardService) {
-    this.board.restart();
   }
 
   public drop(colIx: number) {
@@ -22,9 +21,6 @@ export class Level4Component {
     return this.board.getWinnerIx();
   }
 
-  public restart():void{
-    this.board.restart();
-  }
 
   public getClassesForCells(): string[][] {
     const rows = 6;

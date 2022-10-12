@@ -15,6 +15,9 @@ export class BoardService {
 
 
 
+  constructor() {
+    this.restart();
+  }
 
   public restart():void{
     this.boardContent = [
@@ -42,7 +45,6 @@ export class BoardService {
   }
 
   private dropCoinAtCol(colIx: number):boolean{
-    console.log("dropCoinAtCol")
     for(let i = this.boardContent.length - 1; i >= 0; i--)
     {
       if(this.boardContent[i][colIx] == 0)
